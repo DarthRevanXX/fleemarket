@@ -1,6 +1,7 @@
 import { Fragment, useContext } from "react";
 import classes from "./Header.module.css";
 import AuthContext from "../../store/auth-context.jsx";
+import { Link } from "react-router-dom";
 
 const Header = () => {
   const ctx = useContext(AuthContext);
@@ -8,26 +9,21 @@ const Header = () => {
   return (
     <Fragment>
       <div className={classes.header}>
-        <a href="#default" className={classes.logo}>
+        <Link to="/" className={classes.logo}>
           Testlogo
-        </a>
+        </Link>
         <div className={classes["header-right"]}>
-          {ctx.isLoggedIn && (
-            <a href="#home" className={classes.active}>
-              Home
-            </a>
-          )}
           {!ctx.isLoggedIn && (
-            <a href="#login" onClick={ctx.onLogin}>
+            <Link to="/login" onClick={ctx.onLogin}>
               Login
-            </a>
+            </Link>
           )}
           {ctx.isLoggedIn && (
-            <a href="#logout" onClick={ctx.onLogout}>
+            <Link to="/" onClick={ctx.onLogout}>
               Logout
-            </a>
+            </Link>
           )}
-          <a href="#contact">Contact</a>
+          <Link to="/about">About</Link>
         </div>
       </div>
     </Fragment>
