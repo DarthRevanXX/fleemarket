@@ -1,12 +1,13 @@
 import LoginForm from "./LoginForm";
 import Card from "../../components/UI/Card";
-import classes from "./Login.module.css";
-
+import Center from "../../components/UI/Center";
 const Login = () => {
   return (
-    <Card className={classes["login-wrapper"]}>
-      <LoginForm></LoginForm>
-    </Card>
+    <Center>
+      <Card>
+        <LoginForm></LoginForm>
+      </Card>
+    </Center>
   );
 };
 

@@ -1,12 +1,12 @@
 import { useFormik } from "formik";
-import { Link } from "react-router-dom";
-import classes from "./LoginForm.module.css";
+import classes from "./SignUpForm.module.css";
 
-const LoginForm = () => {
+const SignUpForm = () => {
   const formik = useFormik({
     initialValues: {
       email: "",
       password: "",
+      confirmPassword: "",
     },
     onSubmit: (values) => {
       alert(JSON.stringify(values, null, 2));
@@ -32,18 +32,29 @@ const LoginForm = () => {
       <input
         className={classes.input}
         id="password"
-        name="passwod"
+        name="password"
         type="password"
         onChange={formik.handleChange}
         value={formik.values.password}
       />
 
+      <label className={classes.label} htmlFor="confirm-password">
+        Confirm Password
+      </label>
+      <input
+        className={classes.input}
+        id="confirm-password"
+        name="confirm-password"
+        type="password"
+        onChange={formik.handleChange}
+        value={formik.values.confirmPassword}
+      />
+
       <button type="submit" className={classes.submit}>
-        Submit
+        Sign Up
       </button>
-      <Link to="/signup">Sign up</Link>
     </form>
   );
 };
 
-export default LoginForm;
+export default SignUpForm;
