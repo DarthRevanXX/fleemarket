@@ -7,7 +7,7 @@ import { Link } from "react-router-dom";
 const SignUp = () => {
   return (
     <Center>
-      <Card>
+      <Card className={classes.card}>
         <div className={classes}>
           <h2>
             <i>Create a New Account</i>
