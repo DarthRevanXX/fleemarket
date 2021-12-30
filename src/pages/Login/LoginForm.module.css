@@ -6,8 +6,7 @@
 
 .submit-control {
     display: flex;
-    align-content: center;
-    gap: 0.4em;
+    justify-content: space-between;
 }
 
 .form {

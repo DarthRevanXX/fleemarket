@@ -36,7 +36,7 @@ const LoginForm = () => {
       <div className={classes["submit-control"]}>
         <SubmitButton className name="Submit" />
         <Link className={classes.link} to="/signup">
-          Sign up
+          Sign in instead
         </Link>
       </div>
     </form>
