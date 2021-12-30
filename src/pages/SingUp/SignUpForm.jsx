@@ -1,4 +1,6 @@
 import { useFormik } from "formik";
+import Input from "../../components/UI/Input";
+import SubmitButton from "../../components/UI/SubmitButton";
 import classes from "./SignUpForm.module.css";
 
 const validate = (values) => {
@@ -50,61 +52,48 @@ const SignUpForm = () => {
       alert(JSON.stringify(values, null, 2));
     },
   });
+
+  const isPassHasError = formik.touched.password && formik.errors.password;
+  const isConfPassHasError =
+    formik.touched.confirmPassword && formik.errors.confirmPassword;
+  const isEmailHasError = formik.touched.email && formik.errors.email;
+
   return (
-    <form onSubmit={formik.handleSubmit}>
-      <label className={classes.label} htmlFor="email">
-        Email Address
-      </label>
-      <input
-        className={classes.input}
+    <form className={classes.form} onSubmit={formik.handleSubmit}>
+      <Input
         id="email"
-        name="email"
+        labelName="Email Address"
         type="email"
         onChange={formik.handleChange}
         onBlur={formik.handleBlur}
         value={formik.values.email}
+        errorMessage={formik.errors.email}
+        isError={isEmailHasError}
       />
-      {formik.touched.email && formik.errors.email ? (
-        <div className={classes.error}>{formik.errors.email}</div>
-      ) : null}
 
-      <label className={classes.label} htmlFor="password">
-        Password
-      </label>
-      <input
-        className={classes.input}
+      <Input
         id="password"
-        name="password"
+        labelName="Password"
         type="password"
         onChange={formik.handleChange}
         onBlur={formik.handleBlur}
         value={formik.values.password}
+        errorMessage={formik.errors.password}
+        isError={isPassHasError}
       />
 
-      {formik.touched.password && formik.errors.password ? (
-        <div className={classes.error}>{formik.errors.password}</div>
-      ) : null}
-
-      <label className={classes.label} htmlFor="confirmPassword">
-        Confirm Password
-      </label>
-      <input
-        className={classes.input}
+      <Input
         id="confirmPassword"
-        name="confirmPassword"
+        labelName="Confirm Password"
         type="password"
         onChange={formik.handleChange}
         onBlur={formik.handleBlur}
         value={formik.values.confirmPassword}
+        errorMessage={formik.errors.confirmPassword}
+        isError={isConfPassHasError}
       />
 
-      {formik.touched.confirmPassword && formik.errors.confirmPassword ? (
-        <div className={classes.error}>{formik.errors.confirmPassword}</div>
-      ) : null}
-
-      <button type="submit" className={classes.submit}>
-        Create
-      </button>
+      <SubmitButton className={classes.submit} name="Create" />
     </form>
   );
 };

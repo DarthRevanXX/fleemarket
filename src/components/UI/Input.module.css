@@ -1,0 +1,21 @@
+.input {
+    width: 100%;
+    font-size: 1rem;
+    padding: 0.4rem;
+
+}
+
+.input:focus {
+    outline: none;
+    border-color: #0a95ff;
+}
+
+.label {
+    display: inline-block;
+    margin-bottom: 5px;
+}
+
+.error {
+    display: block;
+    color: red;
+}

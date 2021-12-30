@@ -1,33 +1,11 @@
-.input {
-    display: block;
-    width: 100%;
-    margin-bottom: 0.2rem;
-    padding: 5px 8px;
-    font-size: 14px;
-    height: 20;
-}
-
-.label {
-    display: block;
-    margin-bottom: 0.3rem;
+.form {
+    display: flex;
+    flex-direction: column;
+    row-gap: 10px;
+    flex-wrap: wrap;
 }
 
 .submit {
-    display: block;
-    padding: 10px 15px;
-    border-radius: 5px;
-    text-align: center;
-    cursor: pointer;
-    background-color: #0a95ff;
-    color: #ffffff;
-    border: none;
-    font-size: 0.9rem;
-    line-height: 1rem;
-    margin-top: 0.6rem;
-}
-
-.error {
-    display: block;
-    color: red;
-    margin-bottom: 0.5rem;
+    width: 40%;
+    margin: auto;
 }

@@ -1,5 +1,7 @@
 import { useFormik } from "formik";
 import { Link } from "react-router-dom";
+import Input from "../../components/UI/Input";
+import SubmitButton from "../../components/UI/SubmitButton";
 import classes from "./LoginForm.module.css";
 
 const LoginForm = () => {
@@ -13,35 +15,30 @@ const LoginForm = () => {
     },
   });
   return (
-    <form onSubmit={formik.handleSubmit}>
-      <label className={classes.label} htmlFor="email">
-        Email Address
-      </label>
-      <input
+    <form className={classes.form} onSubmit={formik.handleSubmit}>
+      <Input
         className={classes.input}
         id="email"
-        name="email"
         type="email"
-        onChange={formik.handleChange}
+        labelName="Email Address"
         value={formik.values.email}
-      />
-
-      <label className={classes.label} htmlFor="password">
-        Password
-      </label>
-      <input
-        className={classes.input}
-        id="password"
-        name="passwod"
-        type="password"
         onChange={formik.handleChange}
-        value={formik.values.password}
-      />
+      ></Input>
 
-      <button type="submit" className={classes.submit}>
-        Submit
-      </button>
-      <Link to="/signup">Sign up</Link>
+      <Input
+        id="password"
+        type="password"
+        labelName="Password"
+        value={formik.values.password}
+        onChange={formik.handleChange}
+      ></Input>
+
+      <div className={classes["submit-control"]}>
+        <SubmitButton className name="Submit" />
+        <Link className={classes.link} to="/signup">
+          Sign up
+        </Link>
+      </div>
     </form>
   );
 };
