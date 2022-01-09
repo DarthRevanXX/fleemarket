@@ -1,7 +1,7 @@
-import MainHeader from "../components/Layout/MainHeader";
+import Header from "../components/Layout/Header";
 
 const About = () => {
-  return <MainHeader></MainHeader>;
+  return <Header />;
 };
 
 export default About;
