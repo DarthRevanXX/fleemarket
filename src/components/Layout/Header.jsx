@@ -8,7 +8,9 @@ const Header = (props) => {
   const ctx = useContext(AuthContext);
 
   return (
-    <header className={`${classes.header} ${props.className}`}>
+    <header
+      className={`${classes.header} ${props.className ? props.className : ""}`}
+    >
       <div className={classes.logo}>
         <Link to="/">Sirius</Link>
       </div>
@@ -16,7 +18,11 @@ const Header = (props) => {
       <div className={classes["header-link"]}>
         {!ctx.isLoggedIn && <NavLink to="/signin">Sign in</NavLink>}
 
-        {ctx.isLoggedIn && <NavLink to="/signout">Sign out</NavLink>}
+        {ctx.isLoggedIn && (
+          <NavLink to="/" onClick={ctx.onLogout}>
+            Sign out
+          </NavLink>
+        )}
 
         {ctx.isLoggedIn && <NavLink to="/mypage">My Page</NavLink>}
       </div>

@@ -15,7 +15,7 @@ const SignUp = () => {
           <p>
             Come join our community! Let's set up your account. Already have
             one?{" "}
-            <Link to="/login" className={classes.link}>
+            <Link to="/signin" className={classes.link}>
               Sign in here
             </Link>
           </p>

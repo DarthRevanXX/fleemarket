@@ -1,10 +1,15 @@
 import { useFormik } from "formik";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import Input from "../../components/UI/Input";
 import SubmitButton from "../../components/UI/SubmitButton";
 import classes from "./LoginForm.module.css";
+import { useContext } from "react";
+import AuthContext from "../../stores/auth-context.jsx";
 
 const LoginForm = () => {
+  const ctx = useContext(AuthContext);
+  const navigate = useNavigate();
+
   const formik = useFormik({
     initialValues: {
       email: "",
@@ -12,6 +17,8 @@ const LoginForm = () => {
     },
     onSubmit: (values) => {
       alert(JSON.stringify(values, null, 2));
+      ctx.onLogin();
+      navigate("/");
     },
   });
   return (
@@ -34,9 +41,9 @@ const LoginForm = () => {
       ></Input>
 
       <div className={classes["submit-control"]}>
-        <SubmitButton className name="Submit" />
+        <SubmitButton name="Login" />
         <Link className={classes.link} to="/signup">
-          Sign in instead
+          Create Account
         </Link>
       </div>
     </form>
