@@ -4,11 +4,11 @@ import { useContext } from "react";
 
 import classes from "./Header.module.css";
 
-const Header = () => {
+const Header = (props) => {
   const ctx = useContext(AuthContext);
 
   return (
-    <header className={classes.header}>
+    <header className={`${classes.header} ${props.className}`}>
       <div className={classes.logo}>
         <Link to="/">Sirius</Link>
       </div>
