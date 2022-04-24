@@ -3,7 +3,7 @@ import { Link, useNavigate } from "react-router-dom";
 import Input from "../../components/UI/Input";
 import SubmitButton from "../../components/UI/SubmitButton";
 import classes from "./LoginForm.module.css";
-import { useContext } from "react";
+import { useContext} from "react";
 import AuthContext from "../../stores/auth-context.jsx";
 
 const LoginForm = () => {
@@ -15,12 +15,32 @@ const LoginForm = () => {
       email: "",
       password: "",
     },
+    validate: values => {
+      const errors = {}
+      if (!values.email) {
+        errors.email = 'Required'
+      } else if (
+        !/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i.test(values.email)
+      ) {
+        errors.email = 'Invalid email address'
+      }
+
+      if (!values.password) {
+        errors.password = "Required";
+      }
+
+      return errors
+    },
     onSubmit: (values) => {
       alert(JSON.stringify(values, null, 2));
       ctx.onLogin();
       navigate("/");
     },
   });
+
+  const isEmailHasError = formik.touched.email && formik.errors.email
+  const isPasswordHasError = formik.touched.password && formik.errors.password
+
   return (
     <form className={classes.form} onSubmit={formik.handleSubmit}>
       <Input
@@ -29,7 +49,10 @@ const LoginForm = () => {
         type="email"
         labelName="Email Address"
         value={formik.values.email}
+        onBlur={formik.onBlur}
         onChange={formik.handleChange}
+        errorMessage={formik.errors.email}
+        isError={isEmailHasError}
       ></Input>
 
       <Input
@@ -37,7 +60,10 @@ const LoginForm = () => {
         type="password"
         labelName="Password"
         value={formik.values.password}
+        onBlur={formik.onBlur}
         onChange={formik.handleChange}
+        errorMessage={formik.errors.password}
+        isError={isPasswordHasError}
       ></Input>
 
       <div className={classes["submit-control"]}>

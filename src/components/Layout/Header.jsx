@@ -25,6 +25,8 @@ const Header = (props) => {
         )}
 
         {ctx.isLoggedIn && <NavLink to="/mypage">My Page</NavLink>}
+
+        <NavLink to="/about">About</NavLink>
       </div>
     </header>
   );
